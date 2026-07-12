@@ -1,0 +1,30 @@
+/* src/components/ContentCard.module.css */
+.card {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  margin-bottom: 12px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.name {
+  margin: 0;
+  font-size: 16px;
+}
+.status {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+.body {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #374151;
+}
