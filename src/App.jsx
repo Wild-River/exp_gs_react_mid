@@ -81,59 +81,59 @@ function App() {
 
   return (
     <>
-      <h1>AI文章作成ツール</h1>
-      <p className={styles.my20}>
-        <label htmlFor='type'>
-          種類を選ぶ：
-          <select name='type' id='type' onChange={(e) => setTypes(e.target.value)} value={type}>
-            {TYPE_OPTION.map((type) => {
-              return (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-      </p>
-      <p className={styles.my20}>
-        <label htmlFor='name'>
-          名前：
-          <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-      </p>
-      <p className={styles.my20}>
-        <label htmlFor='feature' className={styles.fieldLabel}>
-          内容：
-          <textarea type='text' rows={8} cols={50} value={feature} onChange={(e) => setFeature(e.target.value)} />
-        </label>
-      </p>
-      <p className={styles.my20}>
-        <label htmlFor='tone'>
-          トーン：
-          <select name='tone' id='tone' onChange={(e) => setTones(e.target.value)} value={tone}>
-            {TONE_OPTION.map((tone) => {
-              return (
-                <option key={tone} value={tone}>
-                  {tone}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-      </p>
-
-      <button onClick={handleGenerate} disabled={status.loading} className={`${styles.btnPrimary} ${styles.my30}`}>
-        {/* 本来ならinputに入力しないとボタンクリックできないようにエラーハンドリングする！API従量課金への対応 */}
-        {status.loading ? '生成中…' : '生成する'}
-      </button>
-      {contents.length === 0 && (
-        <p>
-          まだコンテンツがありません。
-          <br />
-          上のフォームから生成してみましょう！
+      <h1 className={styles.my80}>
+        <span className={styles.title}>AI文章作成ツール</span>
+      </h1>
+      <div className={styles.aiContainer}>
+        <p className={styles.my20}>
+          <label htmlFor='type'>
+            <span className={styles.label}>種類を選ぶ：</span>
+            <select name='type' id='type' onChange={(e) => setTypes(e.target.value)} value={type}>
+              {TYPE_OPTION.map((type) => {
+                return (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
         </p>
-      )}
+        <p className={styles.my20}>
+          <label htmlFor='name'>
+            <span className={styles.label}>名前：</span>
+            <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+        </p>
+        <p className={styles.my20}>
+          <label htmlFor='feature' className={styles.fieldLabel}>
+            <span className={styles.label}>内容：</span>
+            <textarea type='text' rows={8} cols={50} value={feature} onChange={(e) => setFeature(e.target.value)} />
+          </label>
+        </p>
+        <p className={styles.my20}>
+          <label htmlFor='tone'>
+            <span className={styles.label}>トーン：</span>
+            <select name='tone' id='tone' onChange={(e) => setTones(e.target.value)} value={tone}>
+              {TONE_OPTION.map((tone) => {
+                return (
+                  <option key={tone} value={tone}>
+                    {tone}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </p>
+        <div className={styles.textCenter}>
+          <button onClick={handleGenerate} disabled={status.loading} className={`${styles.btnPrimary} ${styles.my30}`}>
+            {/* 本来ならinputに入力しないとボタンクリックできないようにエラーハンドリングする！API従量課金への対応 */}
+            {status.loading ? '生成中…' : '生成する'}
+          </button>
+        </div>
+      </div>
+
+      {contents.length === 0 && <p className={styles.textCenter}>まだコンテンツがありません。フォームから生成してみましょう！</p>}
       <p style={{ whiteSpace: 'pre-wrap', marginTop: 16 }}>{status.error}</p>
       <div className={styles.contentsGrid}>
         {contents.map((item) => (
