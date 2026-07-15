@@ -1,10 +1,15 @@
 /* src/components/ContentCard.module.css */
 .card {
-  padding: 16px;
+  padding: 26px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #ffffff;
   margin-bottom: 12px;
+
+  p {
+    font-size: 14px;
+    text-align: left;
+  }
 }
 .head {
   display: flex;
@@ -20,8 +25,14 @@
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
+}
+.draft {
   background: #eef2ff;
   color: #4f46e5;
+}
+.type {
+  background: #ffeefb;
+  color: #e546c0;
 }
 .body {
   margin: 0;
