@@ -1,11 +1,12 @@
-/* :root {
-  --color-primary: #5fb0d3;
+:root {
+  --color-primary: #4e4b49;
+  --color-secondary: #b56a3a;
 
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
-  --code-bg: #f4f3ec;
+  --code-bg: #f6f1ed;
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
@@ -39,7 +40,7 @@
 
 body {
   margin: 0;
-  background-color: #f7f7f7;
+  background-color: var(--code-bg);
 }
 
 #root {
@@ -120,4 +121,22 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-border);
-} */
+}
+
+button {
+  padding: 9px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  width: 160px;
+  margin: auto;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 999px;
+  transition: background-color 0.5s;
+}
+
+button:hover {
+  background-color: var(--color-secondary);
+  transition: background-color 0.25s;
+}

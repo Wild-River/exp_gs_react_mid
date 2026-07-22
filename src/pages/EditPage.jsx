@@ -30,19 +30,23 @@ function EditPage({ contents, onUpdate }) {
   return (
     <div>
       <h2>コンテンツを編集</h2>
-      <p style={{ color: '#6b7280' }}>商品名: {item.name}</p>
+      <p style={{ color: '#6b7280', marginBlock: 16 }}>商品名: {item.name}</p>
 
-      <label>本文</label>
-      <textarea value={body} onChange={(e) => setBody(e.target.value)} rows={6} style={{ width: '100%', display: 'block', marginBottom: 12 }} />
+      <label htmlFor='body'>
+        本文
+        <textarea value={body} onChange={(e) => setBody(e.target.value)} rows={6} style={{ width: '100%', display: 'block', marginBlock: 12 }} id='body' />
+      </label>
 
-      <label>ステータス</label>
-      <select value={status} onChange={(e) => setStatus(e.target.value)}>
-        <option value='下書き'>下書き</option>
-        <option value='完成'>完成</option>
-        <option value='公開'>公開</option>
-      </select>
+      <label htmlFor='status'>
+        ステータス
+        <select value={status} onChange={(e) => setStatus(e.target.value)} id='status' style={{ marginLeft: 16 }}>
+          <option value='下書き'>下書き</option>
+          <option value='完成'>完成</option>
+          <option value='公開'>公開</option>
+        </select>
+      </label>
 
-      <div style={{ marginTop: 16 }}>
+      <div style={{ marginTop: 46 }}>
         <button onClick={handleSave}>保存する</button>
         <button onClick={() => navigate('/')} style={{ marginLeft: 8 }}>
           キャンセル

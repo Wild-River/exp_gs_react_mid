@@ -19,9 +19,20 @@
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: #eef2ff;
-  color: #4f46e5;
 }
+.draft {
+  background: #c9b19c;
+  color: #fff;
+}
+.complete {
+  background: #8b6a55;
+  color: #fff;
+}
+.published {
+  background: #5a3b2e;
+  color: #fff;
+}
+
 .body {
   margin: 0;
   white-space: pre-wrap;

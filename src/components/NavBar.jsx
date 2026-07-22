@@ -4,7 +4,7 @@ const linkStyle = ({ isActive }) => ({
   marginRight: 16,
   textDecoration: 'none',
   fontWeight: isActive ? 'bold' : 'normal',
-  color: isActive ? '#4f46e5' : '#374151',
+  color: isActive ? '#B56A3A' : '#374151',
 });
 
 function NavBar() {
