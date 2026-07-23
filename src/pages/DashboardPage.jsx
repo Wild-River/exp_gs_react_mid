@@ -8,7 +8,7 @@ function DashboardPage({ contents }) {
   return (
     <div>
       <h2>生成したコンテンツ</h2>
-      <div style={{ marginBottom: 30 }}>
+      <div style={{ marginBottom: 30, fontSize: 16 }}>
         （公開：{publishedCount}件 / 完成：{completeCount}件 / 下書き{draftCount}件）
       </div>
       {contents.length === 0 ? (
@@ -16,7 +16,8 @@ function DashboardPage({ contents }) {
       ) : (
         contents.map((item) => (
           <Link key={item.id} to={`/edit/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <ContentCard name={item.name} body={item.body} status={item.status} />
+            {/* ContentCardにはスプレッド構文でまとめて渡す */}
+            <ContentCard {...item} />
           </Link>
         ))
       )}

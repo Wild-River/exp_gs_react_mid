@@ -31,7 +31,7 @@ function App() {
   return (
     <div style={{ maxWidth: 640, margin: '0 auto', padding: 24 }}>
       <h1>
-        <span className={styles.title}>AI文章作成ツール</span>
+        <span className={styles.title}>【ECサイト】文章作成ツール</span>
       </h1>
       <NavBar />
 

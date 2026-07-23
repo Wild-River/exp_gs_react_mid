@@ -1,5 +1,5 @@
 .card {
-  padding: 16px;
+  padding: 26px 36px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #ffffff;
@@ -13,11 +13,14 @@
 }
 .name {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
 }
 .status {
   font-size: 12px;
-  padding: 2px 8px;
+  padding: 0 12px;
+  margin-inline: 14px;
   border-radius: 999px;
 }
 .draft {
@@ -37,4 +40,6 @@
   margin: 0;
   white-space: pre-wrap;
   color: #374151;
+  font-size: 16px;
+  line-height: 1.8;
 }

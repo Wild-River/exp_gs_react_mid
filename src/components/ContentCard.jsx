@@ -1,6 +1,6 @@
 import styles from './ContentCard.module.css';
 
-function ContentCard({ name, body, status }) {
+function ContentCard({ name, body, status, isFavorite, tags }) {
   let label;
 
   if (status === '下書き') {
@@ -14,10 +14,16 @@ function ContentCard({ name, body, status }) {
   return (
     <div className={styles.card}>
       <div className={styles.head}>
-        <h3 className={styles.name}>{name}</h3>
-        <span className={`${styles.status} ${label}`}>{status}</span>
+        <div>
+          <div className={styles.name}>
+            <div>{name}</div>
+            <span className={`${styles.status} ${label}`}>{status}</span>
+          </div>
+        </div>
+        {isFavorite ? <span>⭐️</span> : <span>☆</span>}
       </div>
       <p className={styles.body}>{body}</p>
+      <div>{tags.map((tag) => tag)}</div>
     </div>
   );
 }
