@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { STATUS_OPTION } from '../util/status';
+import { tagSplit } from '../util/tags';
 
 function EditPage({ contents, onUpdate }) {
   const { id } = useParams(); // URL の :id（文字列）
@@ -10,7 +12,8 @@ function EditPage({ contents, onUpdate }) {
 
   // 入力用の state（見つかった値を初期値に。無ければ空）
   const [body, setBody] = useState(item ? item.body : '');
-  const [status, setStatus] = useState(item ? item.status : '下書き');
+  const [status, setStatus] = useState(item ? item.status : STATUS_OPTION[0]);
+  const [tagInput, setTagInput] = useState(item ? item.tags?.join(',') : '');
 
   // 該当データが無いとき（直接URLを開いた等）
   if (!item) {
@@ -23,14 +26,15 @@ function EditPage({ contents, onUpdate }) {
   }
 
   function handleSave() {
-    onUpdate(item.id, { body: body, status: status }); // App にお願いして更新
+    const tags = tagSplit(tagInput);
+    onUpdate(item.id, { body, status, tags }); // App にお願いして更新
     navigate('/'); // 保存したら一覧へ
   }
 
   return (
     <div>
       <h2>コンテンツを編集</h2>
-      <p style={{ color: '#6b7280', marginBlock: 16 }}>商品名: {item.name}</p>
+      <div style={{ marginBlock: 16 }}>{item.name}</div>
 
       <label htmlFor='body'>
         本文
@@ -40,10 +44,17 @@ function EditPage({ contents, onUpdate }) {
       <label htmlFor='status'>
         ステータス
         <select value={status} onChange={(e) => setStatus(e.target.value)} id='status' style={{ marginLeft: 16 }}>
-          <option value='下書き'>下書き</option>
-          <option value='完成'>完成</option>
-          <option value='公開'>公開</option>
+          {STATUS_OPTION.map((status) => (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          ))}
         </select>
+      </label>
+
+      <label htmlFor='tag'>
+        タグ
+        <input type='text' id='tag' value={tagInput} onChange={(e) => setTagInput(e.target.value)} style={{ marginLeft: 16 }} />
       </label>
 
       <div style={{ marginTop: 46 }}>

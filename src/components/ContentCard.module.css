@@ -1,9 +1,8 @@
 .card {
   padding: 26px 36px;
-  border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #ffffff;
-  margin-bottom: 12px;
+  margin-block: 12px;
 }
 .head {
   display: flex;
@@ -24,22 +23,39 @@
   border-radius: 999px;
 }
 .draft {
-  background: #c9b19c;
+  background: var(--color-low);
   color: #fff;
 }
 .complete {
-  background: #8b6a55;
+  background: var(--color-midium);
   color: #fff;
 }
 .published {
-  background: #5a3b2e;
+  background: var(--color-high);
   color: #fff;
 }
 
 .body {
-  margin: 0;
+  margin-bottom: 10px;
   white-space: pre-wrap;
   color: #374151;
   font-size: 16px;
   line-height: 1.8;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.9em;
+  margin-right: 1em;
+}
+.tag:hover {
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+.favoriteIcon {
+  cursor: pointer;
+  padding-right: 1em;
+}
+
+.pencil svg:hover {
+  color: var(--color-secondary);
 }

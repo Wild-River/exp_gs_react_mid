@@ -1,15 +1,22 @@
+import { Link } from 'react-router-dom';
+import { PencilLine, Star } from 'lucide-react';
 import styles from './ContentCard.module.css';
+import { STATUS_OPTION } from '../util/status';
 
-function ContentCard({ name, body, status, isFavorite, tags }) {
+function ContentCard({ id, name, body, status, isFavorite, tags, onToggleFavorite, onTagClick }) {
   let label;
 
-  if (status === '下書き') {
+  if (status === STATUS_OPTION[0]) {
     label = styles.draft;
-  } else if (status === '完成') {
+  } else if (status === STATUS_OPTION[1]) {
     label = styles.complete;
-  } else if (status === '公開') {
+  } else if (status === STATUS_OPTION[2]) {
     label = styles.published;
   }
+
+  const filteredTag = (tag) => {
+    onTagClick(tag);
+  };
 
   return (
     <div className={styles.card}>
@@ -20,10 +27,23 @@ function ContentCard({ name, body, status, isFavorite, tags }) {
             <span className={`${styles.status} ${label}`}>{status}</span>
           </div>
         </div>
-        {isFavorite ? <span>⭐️</span> : <span>☆</span>}
+        <div>
+          <span onClick={onToggleFavorite} className={styles.favoriteIcon}>
+            <Star size={24} fill={isFavorite ? '#ffeb0a' : 'none'} color={isFavorite ? '#ffeb0a' : '#6b6375'} strokeWidth={1.5} />
+          </span>
+          <span className={styles.pencil}>
+            <Link to={`/edit/${id}`}>
+              <PencilLine size={24} color={'#6b6375'} strokeWidth={1.5} />
+            </Link>
+          </span>
+        </div>
       </div>
       <p className={styles.body}>{body}</p>
-      <div>{tags.map((tag) => tag)}</div>
+      <div>
+        {tags?.map((tag) => (
+          <span key={tag} className={styles.tag} onClick={() => filteredTag(tag)}>{`#${tag}`}</span>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,1 @@
+export const STATUS_OPTION = ['下書き', '完成', '公開'];

@@ -36,7 +36,7 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path='/' element={<DashboardPage contents={contents} />} />
+        <Route path='/' element={<DashboardPage contents={contents} onUpdate={updateContent} />} />
         <Route path='/generate' element={<GeneratePage onAdd={addContent} />} />
         <Route path='/edit/:id' element={<EditPage contents={contents} onUpdate={updateContent} />} />
       </Routes>

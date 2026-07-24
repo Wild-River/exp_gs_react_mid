@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './GeneratePage.module.css';
+import { tagSplit } from '../util/tags';
 
 const TONE_OPTION = ['ていねい', '親しみやすい', '高級感'];
 const TYPE_OPTION = ['商品説明', 'キャッチコピー', 'SNS投稿文', '問い合わせ対応'];
@@ -54,16 +55,15 @@ function GeneratePage({ onAdd }) {
       }
       const text = data.choices[0].message.content;
 
-      const tagSprit = tagInput.split(',').map((tag) => tag.trim());
-      console.log(tagSprit);
+      const tags = tagSplit(tagInput);
 
       const newItem = {
         id: Date.now(),
         name,
         body: text,
-        status: '下書き',
+        status: STATUS_OPTION[0],
         isFavorite: false,
-        tags: tagSprit,
+        tags,
       };
 
       onAdd(newItem); // ← App に「これを追加して」とお願いする
@@ -125,7 +125,7 @@ function GeneratePage({ onAdd }) {
         </p>
 
         <p className={styles.my20}>
-          <label htmlFor='tags' className={styles.fieldLabel}>
+          <label htmlFor='tags'>
             <span className={styles.label}>タグ：</span>
             <input type='text' id='tags' value={tagInput} onChange={(e) => setTagInput(e.target.value)} placeholder='カンマ区切り(,)で入力' />
           </label>
