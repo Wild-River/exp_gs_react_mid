@@ -13,7 +13,7 @@ AIコンテンツ生成ツール（ECサイト文章作成ツール）
 
 ## ③アプリのデプロイURL
 
-（未デプロイ・ローカル環境での動作確認のみ）
+https://exp-gs-react-mid-omega.vercel.app/
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
 
