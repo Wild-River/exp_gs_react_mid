@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './GeneratePage.module.css';
 import { tagSplit } from '../util/tags';
+import { STATUS_OPTION } from '../util/status';
 
 const TONE_OPTION = ['ていねい', '親しみやすい', '高級感'];
 const TYPE_OPTION = ['商品説明', 'キャッチコピー', 'SNS投稿文', '問い合わせ対応'];
