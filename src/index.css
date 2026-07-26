@@ -97,7 +97,6 @@ label {
 
 input,
 select,
-button,
 textarea {
   width: 470px;
   font-family: inherit;
@@ -130,18 +129,30 @@ textarea:focus {
 }
 
 button {
-  padding: 9px;
+  cursor: pointer;
   border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.btnPrimary {
+  padding: 9px;
   font-size: 16px;
   font-weight: 600;
   width: 160px;
   background-color: var(--color-midium);
   color: #fff;
   border-radius: 999px;
-  transition: background-color 0.5s;
+  transition: background-color 0.25s;
 }
 
-button:hover {
+.btnPrimary:hover {
   background-color: var(--color-high);
-  transition: background-color 0.25s;
+}
+
+.btnPrimary:disabled {
+  background-color: var(--color-low);
+  color: var(--text);
+  cursor: not-allowed;
 }

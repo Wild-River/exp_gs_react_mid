@@ -14,6 +14,7 @@ function EditPage({ contents, onUpdate }) {
   const [body, setBody] = useState(item ? item.body : '');
   const [status, setStatus] = useState(item ? item.status : STATUS_OPTION[0]);
   const [tagInput, setTagInput] = useState(item ? item.tags?.join(',') : '');
+  const [copied, setCopied] = useState(false); // Copy機能の実装
 
   // 該当データが無いとき（直接URLを開いた等）
   if (!item) {
@@ -29,6 +30,16 @@ function EditPage({ contents, onUpdate }) {
     const tags = tagSplit(tagInput);
     onUpdate(item.id, { body, status, tags }); // App にお願いして更新
     navigate('/'); // 保存したら一覧へ
+  }
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(body);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      alert('コピーできませんでした。本文を選択して手動でコピーしてください。');
+    }
   }
 
   return (
@@ -60,8 +71,13 @@ function EditPage({ contents, onUpdate }) {
       </label>
 
       <div style={{ marginTop: 46 }}>
-        <button onClick={handleSave}>保存する</button>
-        <button onClick={() => navigate('/')} style={{ marginLeft: 8 }}>
+        <button onClick={handleSave} className='btnPrimary'>
+          保存する
+        </button>
+        <button onClick={handleCopy} className='btnPrimary' style={{ marginLeft: 8 }}>
+          {copied ? 'コピーしました！' : '本文をコピー'}
+        </button>
+        <button onClick={() => navigate('/')} className='btnPrimary' style={{ marginLeft: 8 }}>
           キャンセル
         </button>
       </div>

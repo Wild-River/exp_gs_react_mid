@@ -26,6 +26,12 @@ function GeneratePage({ onAdd }) {
   const [status, setStatus] = useState({ loading: false, error: null }); //ステータス
 
   async function handleGenerate() {
+    // 入力チェック：name.trim() は前後の空白を除く（"   "だけ→空とみなす）。空なら生成しない
+    if (!name.trim()) {
+      setStatus((prev) => ({ ...prev, error: '商品名を入力してください。' }));
+      return;
+    }
+
     setStatus((prev) => ({ ...prev, loading: true }));
 
     try {
@@ -147,8 +153,7 @@ function GeneratePage({ onAdd }) {
           </label>
         </p>
         <div className={styles.textCenter}>
-          <button onClick={handleGenerate} disabled={status.loading} className={`${styles.btnPrimary} ${styles.my30}`}>
-            {/* 本来ならinputに入力しないとボタンクリックできないようにエラーハンドリングする！API従量課金への対応 */}
+          <button onClick={handleGenerate} disabled={status.loading || !name.trim()} className={`btnPrimary ${styles.my30}`}>
             {status.loading ? '生成中…' : '生成する'}
           </button>
         </div>

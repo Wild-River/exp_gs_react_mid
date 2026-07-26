@@ -1,8 +1,31 @@
 .buttonContainer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .contentStatus {
   font-size: 16px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inputContainerChild {
+  display: flex;
+  column-gap: 1em;
+  flex: 1;
+}
+
+.inputContainer label:first-child {
+  /* flex-grow: 1; */
+}
+
+.inputContainerChild label {
+  /* flex: 1; */
+}
+.inputContainerChild input {
+  /* width: 100%; */
 }

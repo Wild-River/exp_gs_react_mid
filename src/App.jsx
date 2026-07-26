@@ -28,6 +28,10 @@ function App() {
     setContents((prev) => prev.map((c) => (c.id === id ? { ...c, ...changes } : c)));
   }
 
+  function deleteContent(id) {
+    setContents((prev) => prev.filter((c) => c.id !== id));
+  }
+
   return (
     <div style={{ maxWidth: 640, margin: '0 auto', padding: 24 }}>
       <h1>
@@ -36,7 +40,7 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path='/' element={<DashboardPage contents={contents} onUpdate={updateContent} />} />
+        <Route path='/' element={<DashboardPage contents={contents} onUpdate={updateContent} onDelete={deleteContent} />} />
         <Route path='/generate' element={<GeneratePage onAdd={addContent} />} />
         <Route path='/edit/:id' element={<EditPage contents={contents} onUpdate={updateContent} />} />
       </Routes>
