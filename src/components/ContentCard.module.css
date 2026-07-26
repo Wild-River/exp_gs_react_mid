@@ -48,7 +48,7 @@
   margin-right: 1em;
 }
 .tag:hover {
-  color: var(--color-secondary);
+  color: var(--color-high);
   cursor: pointer;
 }
 .favoriteIcon {
@@ -56,6 +56,10 @@
   padding-right: 1em;
 }
 
+.favoriteIcon svg:hover {
+  stroke: var(--color-pink);
+}
+
 .pencil svg:hover {
-  color: var(--color-secondary);
+  stroke: var(--color-pink);
 }

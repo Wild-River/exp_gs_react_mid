@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const linkStyle = ({ isActive }) => ({
   marginRight: 16,
@@ -8,6 +8,7 @@ const linkStyle = ({ isActive }) => ({
 });
 
 function NavBar() {
+  const location = useLocation();
   return (
     <nav
       style={{
@@ -22,6 +23,13 @@ function NavBar() {
       <NavLink to='/generate' style={linkStyle}>
         生成する
       </NavLink>
+      {location.pathname.startsWith('/edit/') ? (
+        <NavLink to={location.pathname} style={linkStyle}>
+          コンテンツを編集
+        </NavLink>
+      ) : (
+        ''
+      )}
     </nav>
   );
 }

@@ -33,8 +33,10 @@ function EditPage({ contents, onUpdate }) {
 
   return (
     <div>
-      <h2>コンテンツを編集</h2>
-      <div style={{ marginBlock: 16 }}>{item.name}</div>
+      <div>
+        <div style={{ marginBlock: 10, fontSize: 16.2, color: '#1e293b' }}>商品名</div>
+        <div style={{ marginBottom: 16 }}>{item.name}</div>
+      </div>
 
       <label htmlFor='body'>
         本文

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PencilLine, Star } from 'lucide-react';
+import { PencilLine, Heart } from 'lucide-react';
 import styles from './ContentCard.module.css';
 import { STATUS_OPTION } from '../util/status';
 
@@ -29,7 +29,7 @@ function ContentCard({ id, name, body, status, isFavorite, tags, onToggleFavorit
         </div>
         <div>
           <span onClick={onToggleFavorite} className={styles.favoriteIcon}>
-            <Star size={24} fill={isFavorite ? '#ffeb0a' : 'none'} color={isFavorite ? '#ffeb0a' : '#6b6375'} strokeWidth={1.5} />
+            <Heart size={24} fill={isFavorite ? '#F91980' : 'none'} color={isFavorite ? '#F91980' : '#6b6375'} strokeWidth={1.5} />
           </span>
           <span className={styles.pencil}>
             <Link to={`/edit/${id}`}>
